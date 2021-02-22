@@ -3,7 +3,12 @@ import { Button } from '../src/components/Button'
 
 function App() {
   return (
-    <Button />
+    <div>
+      <Button color="red" />
+      <Button color="blue" />
+      <Button color="purple" />
+    </div>
+
   );
 }
 
