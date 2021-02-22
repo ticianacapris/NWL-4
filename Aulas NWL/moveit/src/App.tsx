@@ -1,6 +1,8 @@
 
 import { Button } from '../src/components/Button'
 
+import'./styles/global.css';
+
 function App() {
   return (
     <div>
@@ -14,7 +16,7 @@ function App() {
 
       </Button>
       <Button color="purple">
-      Botão 3
+      Botão 3 
 
       </Button>
     </div>
