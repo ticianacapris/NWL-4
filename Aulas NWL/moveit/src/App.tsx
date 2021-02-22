@@ -1,24 +1,12 @@
 
-import { Button } from '../src/components/Button'
+
 
 import'./styles/global.css';
 
 function App() {
   return (
     <div>
-      <Button color="red">
-        Botão 1
-
-      </Button>
-      <Button color="blue">
-
-      Botão 2
-
-      </Button>
-      <Button color="purple">
-      Botão 3 
-
-      </Button>
+     
     </div>
 
   );
