@@ -8,19 +8,12 @@
     flex-direction: column;
 }
 
+
+
 .container section{
-    flex:1;
-    display:grid;
-    grid-template-columns: 1fr,1fr;
-    /* ---100px no desktop--- */
-    gap:6.5rem; 
-    /* ---alinhar o grid ao centro--- */
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6.25rem;
     align-content: center;
-
-
-}
-
-.leftContainer{
-
-
 }
