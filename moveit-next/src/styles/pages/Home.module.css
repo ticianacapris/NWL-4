@@ -1,0 +1,26 @@
+.container{
+
+    height: 100vh;
+    max-width: 0 auto;
+    padding:2.5rem 2rem;
+    display:flex;
+ /*   deixar os proximos elemento por coluna */
+    flex-direction: column;
+}
+
+.container section{
+    flex:1;
+    display:grid;
+    grid-template-columns: 1fr,1fr;
+    /* ---100px no desktop--- */
+    gap:6.5rem; 
+    /* ---alinhar o grid ao centro--- */
+    align-content: center;
+
+
+}
+
+.leftContainer{
+
+
+}
