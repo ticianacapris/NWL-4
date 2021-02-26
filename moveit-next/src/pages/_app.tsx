@@ -1,26 +1,22 @@
-import '../styles/global.css';
-import { ChallengesContext, ChallengesProvider } from '../contexts/ChallengeContext'
-import React, { useState } from 'react';
-import { CountdownProvider } from '../contexts/CountdownContext';
+import { AppProps } from 'next/app'
+import React from 'react'
 
+import GlobalStyles from '../styles/global'
 
-function MyApp({ Component, pageProps }) {
+import Header from '../components/Header'
 
+import { CountdownProvider } from '../contexts/CountdownContext'
+import { ThemesProvider } from '../contexts/ThemeContext'
 
-
-
+function MyApp({ Component, pageProps }: AppProps) {
 
   return (
-
-
-    
-
-        <Component {...pageProps} />
+    <ThemesProvider>
+      <GlobalStyles />
+      <Header />
+      <Component {...pageProps} />
+    </ThemesProvider>
   )
-
 }
 
-
-
-
-export default MyApp
+export default MyApp;

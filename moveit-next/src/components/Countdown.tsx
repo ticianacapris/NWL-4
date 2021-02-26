@@ -1,26 +1,22 @@
+import { useContext } from 'react';
+import { CountdownContext } from '../contexts/CountdownContext';
 
-import { useContext } from "react";
-import { CountdownContext } from "../contexts/CountdownContext";
-
-import styles from "../styles/components/Countdown.module.css";
-
-
+import styles from '../styles/components/Countdown.module.css';
 
 export function Countdown() {
-  
   const {
     minutes,
     seconds,
-    hasFinished,
-    isActive, 
-    startCountdown,
-    resetCountdown}= useContext(CountdownContext);
- 
+    hasFinish,
+    isActive,
+    
+    resetCountdown,
+    startCountdown
+  } = useContext(CountdownContext);
 
-  const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
-  const [secondsLeft, secondsRight] = String(seconds).padStart(2, "0").split("");
+  const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('');
+  const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
 
-  
   return (
     <div>
       <div className={styles.countdownContainer}>
@@ -28,39 +24,49 @@ export function Countdown() {
           <span>{minuteLeft}</span>
           <span>{minuteRight}</span>
         </div>
-        <span> : </span>
-
+        <span>:</span>
         <div>
-          <span>{secondsLeft}</span>
-          <span>{secondsRight}</span>
+          <span>{secondLeft}</span>
+          <span>{secondRight}</span>
         </div>
       </div>
 
-      {hasFinished ? (
-        <button disabled className={styles.CountdownButton}>
-          Ciclo Encerrado
-        </button>
-      ) : (
-        <>
-          {isActive ? (
-            <button
-              type="button"
-              className={`${styles.CountdownButton} ${styles.CountdownButtonActive}`}
-              onClick={resetCountdown}
-            >
-              Abandonar ciclo
-            </button>
-          ) : (
-            <button
-              type="button"
-              className={styles.CountdownButton}
-              onClick={startCountdown}
-            >
-              Iniciar um ciclo
-            </button>
-          )}
-        </>
-      )}
+      { hasFinish ?
+        (
+          <button
+            disabled
+            className={styles.countdownButton}
+          >
+            Ciclo encerrado
+          </button>
+        )
+        : 
+          (<>
+            { isActive ?
+              (
+                <button
+                  type="button"
+                  className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
+                  onClick={resetCountdown}
+                >
+                  Abandonar um ciclo
+                </button>
+              ) :
+                (
+                  <button
+                    type="button"
+                    className={styles.countdownButton}
+                    onClick={startCountdown}
+                  >
+                    Iniciar um ciclo
+                  </button>
+                )
+            }
+          </>)
+      }
+
+      
+
     </div>
   );
 }
