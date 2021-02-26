@@ -3,6 +3,7 @@ import { ChallengesContext, ChallengesProvider } from '../contexts/ChallengeCont
 import React, { useState } from 'react';
 import { CountdownProvider } from '../contexts/CountdownContext';
 
+
 function MyApp({ Component, pageProps }) {
 
 
