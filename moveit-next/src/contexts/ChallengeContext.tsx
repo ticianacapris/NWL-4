@@ -15,7 +15,7 @@ interface ChallengeContextData {
     level: number;
     levelUp: ()=>void;
     currentExperience: number;
-    challengedCompleted: number;
+    challengesCompleted: number;
     startNewChallenge: ()=>void;
     activeChallenge:Challenge;
     resetChallenge: ()=>void;
@@ -26,16 +26,26 @@ interface ChallengeContextData {
 
 interface ChallengeProviderProps {
     children: ReactNode;
+    
 
-}
+    level:number;
+    currentExperience:number;
+    challengesCompleted:number;
+  
+  }
+  
+
 
 export const ChallengesContext = createContext({}as ChallengeContextData);
 
-export function ChallengesProvider({ children }: ChallengeProviderProps) {
+export function ChallengesProvider({ 
+    children,
+   ...rest
+}: ChallengeProviderProps) {
 
-    const [level, setLevel] = useState(1);
-    const [currentExperience, setCurrentExperience] = useState(0);
-    const [challengedCompleted, setChallengesCompleted] = useState(0);
+    const [level, setLevel] = useState(rest.level ?? 1);
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ??0);
     const [activeChallenge, setActiveChallenge] = useState(null);
     const experienceToNextLevel =Math.pow((level+1)*4,2)
 
@@ -45,9 +55,9 @@ export function ChallengesProvider({ children }: ChallengeProviderProps) {
     useEffect(()=>{
         Cookies.set('level', String(level));
         Cookies.set('currentExperience', String(currentExperience));
-        Cookies.set('challengedCompleted', String(challengedCompleted));
+        Cookies.set('challengesCompleted', String(challengesCompleted));
 
-    },[level,currentExperience, challengedCompleted]);
+    },[level,currentExperience, challengesCompleted]);
 
     function levelUp() {
 
@@ -90,7 +100,7 @@ export function ChallengesProvider({ children }: ChallengeProviderProps) {
     }
     setCurrentExperience(finalExperience);
     setActiveChallenge(null);
-    setChallengesCompleted(challengedCompleted + 1);
+    setChallengesCompleted(challengesCompleted + 1);
 
   
 
@@ -104,7 +114,7 @@ export function ChallengesProvider({ children }: ChallengeProviderProps) {
                 level,
                 levelUp,
                 currentExperience,
-                challengedCompleted,
+                challengesCompleted,
                 startNewChallenge,
                 activeChallenge,
                 resetChallenge,

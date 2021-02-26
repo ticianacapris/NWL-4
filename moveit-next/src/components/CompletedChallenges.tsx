@@ -3,7 +3,7 @@ import { ChallengesContext } from '../contexts/ChallengeContext';
 import styles from '../styles/components/CompletedChallenges.module.css';
 
 export function CompletedChallenges() {
-    const{challengedCompleted}= useContext(ChallengesContext);
+    const{challengesCompleted}= useContext(ChallengesContext);
 
 
 
@@ -17,7 +17,7 @@ export function CompletedChallenges() {
                     Desafios completos
                 </span>
                 <span>
-                    {challengedCompleted}
+                    {challengesCompleted}
                 </span>
             </div>
 
